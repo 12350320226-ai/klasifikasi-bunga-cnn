@@ -5,13 +5,11 @@ import numpy as np
 import json
 from PIL import Image
 
-# Load class names
 with open("class_names.json", "r") as f:
     class_names = json.load(f)
 
 num_classes = len(class_names)
 
-# Buat ulang arsitektur CNN yang sama seperti di Colab
 model = models.Sequential([
     layers.Input(shape=(150, 150, 3)),
     layers.Rescaling(1./255),
@@ -33,7 +31,6 @@ model = models.Sequential([
     layers.Dense(num_classes, activation='softmax')
 ])
 
-# Load weights hasil training
 model.load_weights("model_bunga.weights.h5")
 
 st.set_page_config(
